@@ -1,3 +1,17 @@
+Metadata-Version: 2.1
+Name: flyflow-client
+Version: 0.1.0
+Summary: A client library for the FlyFlow API
+Home-page: https://github.com/flyflow-devs/flyflow-python
+Author: Carl Cortright
+Author-email: carl@flyflow.dev
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests>=2.25.1
+
 # Flyflow
 
 Flyflow is a Python client library for interacting with the Flyflow API. It provides a simple and intuitive interface to manage agents, calls, and perform various operations related to the Flyflow platform.
@@ -15,7 +29,7 @@ pip install flyflow-client
 To use the Flyflow client library, you need to import the `Flyflow` class from the `flyflow.client` module:
 
 ```python
-from flyflowclient.client import Flyflow
+from flyflow_client.client import Flyflow
 
 client = Flyflow()
 ```
