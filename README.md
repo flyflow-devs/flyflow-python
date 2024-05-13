@@ -7,7 +7,7 @@ Flyflow is a Python client library for interacting with the Flyflow API. It prov
 You can install the Flyflow package using pip:
 
 ```
-pip install flyflow-client
+pip install flyflowclient
 ```
 
 ## Usage
