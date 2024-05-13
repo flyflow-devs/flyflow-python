@@ -15,7 +15,7 @@ pip install flyflowclient
 To use the Flyflow client library, you need to import the `Flyflow` class from the `flyflow.client` module:
 
 ```python
-from flyflowclient.client import Flyflow
+from flyflowclient import Flyflow
 
 client = Flyflow()
 ```
