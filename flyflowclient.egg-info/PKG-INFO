@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: flyflowclient
-Version: 1.14.4
+Version: 1.14.6
 Summary: A client library for the FlyFlow API
 Home-page: https://github.com/flyflow-devs/flyflow-python
 Author: Carl Cortright
@@ -21,7 +21,7 @@ Flyflow is a Python client library for interacting with the Flyflow API. It prov
 You can install the Flyflow package using pip:
 
 ```
-pip install flyflow-client
+pip install flyflowclient
 ```
 
 ## Usage
