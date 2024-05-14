@@ -38,15 +38,15 @@ client = Flyflow(base_url='https://custom-api-url.com')
 
 ```python
 agent = client.create_agent(
-    name='Agent Name',
-    system_prompt='System prompt',
-    initial_message='Initial message',
-    llm_model='gpt-3.5-turbo',
-    voice_id='voice_id',
-    webhook='https://webhook-url.com',
-    tools=[],
-    filler_words=True,
-    area_code='123'
+   name='Agent Name',
+   system_prompt='System prompt',
+   initial_message='Initial message',
+   llm_model='gpt-3.5-turbo',
+   voice_id='voice_id',
+   webhook='https://webhook-url.com',
+   tools=[],
+   filler_words=True,
+   area_code='123'
 )
 ```
 
@@ -100,8 +100,8 @@ call = client.get_call(call_id=call['id'])
 
 ```python
 updated_call = client.set_call_context(
-    call_id=call['id'],
-    context='Updated call context'
+   call_id=call['id'],
+   context='Updated call context'
 )
 ```
 
