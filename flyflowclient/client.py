@@ -10,7 +10,7 @@ class Flyflow:
             'Content-Type': 'application/json'
         }
 
-    def create_call(self, from_number, to_number, context):
+    def create_call(self, from_number, to_number, context=''):
         payload = {
             'from': from_number,
             'to': to_number,
@@ -44,13 +44,13 @@ class Flyflow:
         response.raise_for_status()
         return response.json()
 
-    def create_agent(self, name, system_prompt, initial_message, llm_model, voice_id, webhook, tools, filler_words, filler_words_whitelist, area_code):
+    def create_agent(self, name=None, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None, area_code=None):
         payload = {
             'name': name,
             'system_prompt': system_prompt,
             'initial_message': initial_message,
-            'llm_model': llm_model,
             'voice_id': voice_id,
+            'llm_model': llm_model,
             'webhook': webhook,
             'tools': tools,
             'filler_words': filler_words,
@@ -61,14 +61,14 @@ class Flyflow:
         response.raise_for_status()
         return response.json()
 
-    def update_agent(self, agent_id, name=None, system_prompt=None, initial_message=None, llm_model=None, voice_id=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None):
+    def update_agent(self, agent_id, name=None, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None):
         payload = {
             'id': agent_id,
             'name': name,
             'system_prompt': system_prompt,
             'initial_message': initial_message,
-            'llm_model': llm_model,
             'voice_id': voice_id,
+            'llm_model': llm_model,
             'webhook': webhook,
             'tools': tools,
             'filler_words': filler_words,
