@@ -44,7 +44,7 @@ class Flyflow:
         response.raise_for_status()
         return response.json()
 
-    def create_agent(self, name, system_prompt, initial_message, llm_model, voice_id, webhook, tools, filler_words, area_code):
+    def create_agent(self, name, system_prompt, initial_message, llm_model, voice_id, webhook, tools, filler_words, filler_words_whitelist, area_code):
         payload = {
             'name': name,
             'system_prompt': system_prompt,
@@ -54,13 +54,14 @@ class Flyflow:
             'webhook': webhook,
             'tools': tools,
             'filler_words': filler_words,
+            'filler_words_whitelist': filler_words_whitelist,
             'area_code': area_code
         }
         response = requests.post(f'{self.base_url}/agent', json=payload, headers=self.headers)
         response.raise_for_status()
         return response.json()
 
-    def update_agent(self, agent_id, name=None, system_prompt=None, initial_message=None, llm_model=None, voice_id=None, webhook=None, tools=None, filler_words=None):
+    def update_agent(self, agent_id, name=None, system_prompt=None, initial_message=None, llm_model=None, voice_id=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None):
         payload = {
             'id': agent_id,
             'name': name,
@@ -70,7 +71,8 @@ class Flyflow:
             'voice_id': voice_id,
             'webhook': webhook,
             'tools': tools,
-            'filler_words': filler_words
+            'filler_words': filler_words,
+            'filler_words_whitelist': filler_words_whitelist,
         }
         payload = {k: v for k, v in payload.items() if v is not None}
         response = requests.post(f'{self.base_url}/agent', json=payload, headers=self.headers)
