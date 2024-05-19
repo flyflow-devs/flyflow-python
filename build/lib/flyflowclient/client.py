@@ -34,11 +34,12 @@ class Flyflow:
         response.raise_for_status()
         return response.json()
 
-    def list_calls(self, cursor=None, limit=10, agent_id=None):
+    def list_calls(self, cursor=None, limit=10, agent_id=None, client_number=None):
         params = {
             'cursor': cursor,
             'limit': limit,
-            'agent_id': agent_id
+            'agent_id': agent_id,
+            'client_number': client_number
         }
         response = requests.get(f'{self.base_url}/calls', params=params, headers=self.headers)
         response.raise_for_status()
