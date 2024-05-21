@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: flyflowclient
-Version: 1.14.9
+Version: 1.14.13
 Summary: A client library for the FlyFlow API
 Home-page: https://github.com/flyflow-devs/flyflow-python
 Author: Carl Cortright
@@ -123,6 +123,14 @@ updated_call = client.set_call_context(
 
 ```python
 calls = client.list_calls(limit=10, agent_id=agent['id'])
+```
+
+### Filler Words
+
+#### Get Filler Words
+
+```python
+filler_words = client.get_filler_words(text='Your text here')
 ```
 
 For more detailed information about the available methods and their parameters, please refer to the Flyflow API documentation.

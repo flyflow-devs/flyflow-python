@@ -111,6 +111,14 @@ updated_call = client.set_call_context(
 calls = client.list_calls(limit=10, agent_id=agent['id'])
 ```
 
+### Filler Words
+
+#### Get Filler Words
+
+```python
+filler_words = client.get_filler_words(text='Your text here')
+```
+
 For more detailed information about the available methods and their parameters, please refer to the Flyflow API documentation.
 
 ## Publishing the Package

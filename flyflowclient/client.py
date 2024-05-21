@@ -45,7 +45,7 @@ class Flyflow:
         response.raise_for_status()
         return response.json()
 
-    def create_agent(self, name=None, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None, area_code=None):
+    def create_agent(self, name=None, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None, area_code=None, actions=None, voicemail_number=None, chunking=None):
         payload = {
             'name': name,
             'system_prompt': system_prompt,
@@ -56,13 +56,16 @@ class Flyflow:
             'tools': tools,
             'filler_words': filler_words,
             'filler_words_whitelist': filler_words_whitelist,
-            'area_code': area_code
+            'area_code': area_code,
+            'actions': actions,
+            'voicemail_number': voicemail_number,
+            'chunking': chunking,
         }
         response = requests.post(f'{self.base_url}/agent', json=payload, headers=self.headers)
         response.raise_for_status()
         return response.json()
 
-    def update_agent(self, agent_id, name=None, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None):
+    def update_agent(self, agent_id, name=None, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None, actions=None, voicemail_number=None, chunking=None):
         payload = {
             'id': agent_id,
             'name': name,
@@ -74,6 +77,9 @@ class Flyflow:
             'tools': tools,
             'filler_words': filler_words,
             'filler_words_whitelist': filler_words_whitelist,
+            'actions': actions,
+            'voicemail_number': voicemail_number,
+            'chunking': chunking
         }
         payload = {k: v for k, v in payload.items() if v is not None}
         response = requests.post(f'{self.base_url}/agent', json=payload, headers=self.headers)
@@ -95,5 +101,11 @@ class Flyflow:
             'limit': limit
         }
         response = requests.get(f'{self.base_url}/agents', params=params, headers=self.headers)
+        response.raise_for_status()
+        return response.json()
+
+    def get_filler_words(self, text):
+        params = {'text': text}
+        response = requests.get(f'{self.base_url}/filler-words', params=params, headers=self.headers)
         response.raise_for_status()
         return response.json()
