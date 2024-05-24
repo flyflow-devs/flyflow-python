@@ -45,7 +45,7 @@ class Flyflow:
         response.raise_for_status()
         return response.json()
 
-    def create_agent(self, name=None, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None, area_code=None, actions=None, voicemail_number=None, chunking=None):
+    def create_agent(self, name=None, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None, area_code=None, actions=None, voicemail_number=None, chunking=None, endpointing=None, voice_optimization=None):
         payload = {
             'name': name,
             'system_prompt': system_prompt,
@@ -60,12 +60,14 @@ class Flyflow:
             'actions': actions,
             'voicemail_number': voicemail_number,
             'chunking': chunking,
+            'endpointing': endpointing,
+            'voice_optimization': voice_optimization
         }
         response = requests.post(f'{self.base_url}/agent', json=payload, headers=self.headers)
         response.raise_for_status()
         return response.json()
 
-    def update_agent(self, agent_id, name=None, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None, actions=None, voicemail_number=None, chunking=None):
+    def update_agent(self, agent_id, name=None, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None, actions=None, voicemail_number=None, chunking=None, endpointing=None, voice_optimization=None):
         payload = {
             'id': agent_id,
             'name': name,
@@ -79,7 +81,9 @@ class Flyflow:
             'filler_words_whitelist': filler_words_whitelist,
             'actions': actions,
             'voicemail_number': voicemail_number,
-            'chunking': chunking
+            'chunking': chunking,
+            'endpointing': endpointing,
+            'voice_optimization': voice_optimization
         }
         payload = {k: v for k, v in payload.items() if v is not None}
         response = requests.post(f'{self.base_url}/agent', json=payload, headers=self.headers)

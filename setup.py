@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="flyflowclient",
-    version="1.14.13",
+    version="1.14.14",
     packages=find_packages(),
     install_requires=[
         "requests>=2.25.1"
