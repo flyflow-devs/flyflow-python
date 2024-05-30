@@ -34,10 +34,10 @@ client = Flyflow(base_url='https://custom-api-url.com')
 
 ### Agent Management
 
-#### Create an Agent
+#### Upsert an Agent
 
 ```python
-agent = client.create_agent(
+agent = client.upsert_agent(
    name='Agent Name',
    system_prompt='System prompt',
    initial_message='Initial message',
@@ -46,19 +46,15 @@ agent = client.create_agent(
    webhook='https://webhook-url.com',
    tools=[],
    filler_words=True,
-   area_code='123'
+   actions=[],
+   voicemail_number='+1234567890',
+   chunking=True,
+   endpointing=200,
+   voice_optimization=2
 )
 ```
 
-#### Update an Agent
-
-```python
-updated_agent = client.update_agent(
-    agent_id=agent['id'],
-    name='Updated Agent Name',
-    system_prompt='Updated system prompt'
-)
-```
+The `upsert_agent` method will create a new agent if one with the specified name doesn't exist, or update an existing agent if one with the same name already exists.
 
 #### Get an Agent
 

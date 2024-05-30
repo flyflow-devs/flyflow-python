@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: flyflowclient
-Version: 1.14.14
+Version: 1.14.15
 Summary: A client library for the FlyFlow API
 Home-page: https://github.com/flyflow-devs/flyflow-python
 Author: Carl Cortright
