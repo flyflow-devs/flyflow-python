@@ -10,11 +10,12 @@ class Flyflow:
             'Content-Type': 'application/json'
         }
 
-    def create_call(self, from_number, to_number, context=''):
+    def create_call(self, from_number, to_number, context='', user_speaks_first=False):
         payload = {
             'from': from_number,
             'to': to_number,
-            'context': context
+            'context': context,
+            'user_speaks_first': user_speaks_first,
         }
         response = requests.post(f'{self.base_url}/call', json=payload, headers=self.headers)
         response.raise_for_status()
@@ -45,7 +46,7 @@ class Flyflow:
         response.raise_for_status()
         return response.json()
 
-    def upsert_agent(self, name, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None, actions=None, voicemail_number=None, chunking=None, endpointing=None, voice_optimization=None):
+    def upsert_agent(self, name, system_prompt=None, initial_message=None, voice_id=None, llm_model=None, webhook=None, tools=None, filler_words=None, filler_words_whitelist=None, actions=None, voicemail_number=None, chunking=None, endpointing=None, voice_optimization=None, smart_endpointing_threshold=None):
         payload = {
             'name': name,
             'system_prompt': system_prompt,
@@ -60,7 +61,8 @@ class Flyflow:
             'voicemail_number': voicemail_number,
             'chunking': chunking,
             'endpointing': endpointing,
-            'voice_optimization': voice_optimization
+            'voice_optimization': voice_optimization,
+            'smart_endpointing_threshold': smart_endpointing_threshold
         }
         response = requests.post(f'{self.base_url}/agent', json=payload, headers=self.headers)
         response.raise_for_status()
